@@ -1,14 +1,16 @@
 import React from 'react'
 
-export default function Pokemons() {
+export default function Pokemons({setPokemon,data = []}) {
+    
+    const handlePokemon = (e) => {
+        setPokemon(e.target.value)
+        console.log(e.target.value)
+    }
 
-    //const [pokemons,setPokemons] = useState([])
-    const pokemons = ['Bulbasaur', 'Charmander', 'Squirtle']
     return (
     <>
-        <h1>Pokemon</h1>
-        <select>
-            {pokemons.map(pokemon => <option key={pokemon}>{pokemon}</option>)}
+        <select onChange={handlePokemon}>
+            {data.map(p => <option key={p.pokemon.name}>{p.pokemon.name}</option>)}
         </select>
     </>
   )
